@@ -12,7 +12,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const newUser = await axios.post("users/register", form);
+      const newUser = await axios.post("/api/users/register", form);
       console.log(newUser);
     } catch (err) {
       console.log(err.response);
@@ -22,7 +22,7 @@ const Register = () => {
   return (
     <div>
       <h4>Through your roots we grow together.</h4>
-      <h6>The app that creates cross-cultural and multilingual conversations.</h6>
+      <h6>The app that allows you to connect cross-culturally and create multilingual conversations!</h6>
 
       <form onSubmit={submit} className="reg-form">
         <label>Email</label>
