@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../App.css"
 
 const PostContainer = () => {
   // const [form, setForm] = useState({ title: "", text: "" });
@@ -29,7 +30,7 @@ const PostContainer = () => {
       try {
         const allPosts = await axios.get("/api/posts", {
           cancelToken: source.token,
-          headers: { "x-auth-token": localStorage.getItem("auth-token") },
+          // headers: { "x-auth-token": localStorage.getItem("auth-token") },
         });
 
         setPosts(allPosts.data);
@@ -44,16 +45,22 @@ const PostContainer = () => {
 
   return (
     <div>
-      <h1>hello from post container</h1>
+      <h1 style={{marginTop:"30px"}}>Welcome to Roots!!</h1>
 
-      <div className="allPosts">
+      <div className="container">
         {posts.map((post, index) => (
-          <div className="card" key={index}>
+          <div style={{background:"rgba(255, 255, 255, 0.349)", marginTop:"50px"}} className="card" key={index}>
             <h3>{post.displayName}</h3>
             <p>{post.message}</p>
-            {post.chat.map((chat, index) => {
-              <p key={index}>{chat}</p>;
-            })}
+            <form>
+              <input type="text" className="chatInput" placeholder="message" />
+              <button type="submit" className="chatSubmit">
+                submit
+              </button>
+            </form>
+            {post.chat.map((msg, index) => (
+              <p key={index}>{msg}</p>
+            ))}
           </div>
         ))}
       </div>
