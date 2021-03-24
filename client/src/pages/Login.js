@@ -3,6 +3,8 @@ import UserContext from "../Context/UserContext.js";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+import Nav from "../components/Navbar/nav"
+import Slogan from "../components/Slogan/slogan"
 
 const Login = () => {
   const [form, setForm] = useState();
@@ -48,8 +50,10 @@ const Login = () => {
 
   return (
     <div>
+      <Nav />
+      <Slogan />
       <form onSubmit={submitLoginForm} className="login-form">
-        <h1 style={{ padding: "auto" }}>Login:</h1>
+        <h1 style={{ padding: "20px" }}>Login</h1>
         <label style={{ color: "black" }}>email</label>
         <input
           style={{ color: "black", borderBottom: "1px solid grey" }}
@@ -60,7 +64,7 @@ const Login = () => {
         <p id="logErr" className="hidden"></p>
         <label style={{ color: "black" }}>Password</label>
         <input
-          style={{ color: "black", borderBottom: "1px solid grey" }}
+          style={{ color: "black", borderBottom: "1px solid grey"}}
           onChange={onChange}
           type="text"
           name="password"
